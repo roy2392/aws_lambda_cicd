@@ -35,7 +35,7 @@ jobs:
       - name: AWS CLI upload
         uses: imehedi/actions-awscli-v2@latest
         with:
-          args: "lambda update-function-code --function-name arn:aws:sns:us-east-1:204597968057:roeys-lambda:30663b1d-911e-403c-b0b5-4edf3d2fd28c --zip-file fileb://src/code.zip"
+          args: "lambda update-function-code --function-name arn:aws:lambda:us-east-1:204597968057:function:roeys_lambda_cicd --zip-file fileb://src/code.zip"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
