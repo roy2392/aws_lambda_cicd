@@ -1,12 +1,21 @@
 # AWS Lambda CI/CD Deployment with GitHub Actions
 
 This project automates the deployment of an AWS Lambda function using GitHub Actions. Every push to the main branch will trigger a pipeline that zips the code and deploys it to AWS Lambda.
+if successful, the pipeline will trigger an email notification via AWS SNS.
 
 ## Steps to Set Up
 
 ### 1. Create a New Lambda Function in AWS Console
 - In the AWS Management Console, navigate to Lambda and create a new Lambda function.
 - Use Python as the runtime and copy the default code.
+- Replace the default code with the code you want to deploy.
+- Save the function and make a note of the function name.
+- Create an IAM role with the necessary permissions for the Lambda function.
+- Attach the IAM role to the Lambda function.
+- Create an SNS topic and subscribe to it using your email address.
+- Copy the ARN of the SNS topic.
+- Create an environment variable in the Lambda function with the key `SNS_TOPIC_ARN` and the value as the ARN of the SNS topic.
+- Test the Lambda function to make sure it works.
 
 ### 2. Set Up the Project Locally
 - Create a folder for your project.
