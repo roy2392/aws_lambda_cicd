@@ -16,6 +16,14 @@ if successful, the pipeline will trigger an email notification via AWS SNS.
 - Copy the ARN of the SNS topic.
 - Create an environment variable in the Lambda function with the key `SNS_TOPIC_ARN` and the value as the ARN of the SNS topic.
 - Test the Lambda function to make sure it works.
+- make sure you set up all repository secrets as shown in .env_example file:
+```bash
+AWS_ACCESS_KEY_ID=your_access_key_id
+AWS_SECRET_ACCESS_KEY=your_secret_access_key
+AWS_LAMBDA_ARN=your_lambda_arn
+AWS_SNS_ARN=your_sns_arn
+AWS_REGION=your_lamda_region
+```
 
 ### 2. Set Up the Project Locally
 - Create a folder for your project.
