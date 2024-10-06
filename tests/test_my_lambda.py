@@ -7,7 +7,7 @@ def test_lambda_handler():
     event = {}
     context = {}
     expected_status_code = 200
-    expected_body = 'Hello from Lambda - this is Roey Zalta!!'
+    expected_body = 'Hello from Lambda - this is Roey Zalta!'
 
     # Act
     response = lambda_handler(event, context)
