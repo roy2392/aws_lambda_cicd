@@ -43,7 +43,7 @@ jobs:
 
       - name: Trigger SNS notification
         run: |
-          aws sns publish --topic-arn arn:aws:sns:us-east-1:204597968057:roeys-lambda:30663b1d-911e-403c-b0b5-4edf3d2fd28c \
+          aws sns publish --topic-arn arn:aws:sns:us-east-1:204597968057:roeys-lambda \
           --message "Lambda function updated successfully!" \
           --subject "Lambda Update Success"
         env:
