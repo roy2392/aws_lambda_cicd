@@ -32,9 +32,9 @@ jobs:
       - name: Create Zip file
         run: cd src && zip -r code.zip .
 
-      - name: AWS CLI upload 
+      - name: AWS CLI upload
         uses: imehedi/actions-awscli-v2@latest
-        with: 
+        with:
           args: "lambda update-function-code --function-name arn:aws:sns:us-east-1:204597968057:roeys-lambda:30663b1d-911e-403c-b0b5-4edf3d2fd28c --zip-file fileb://src/code.zip"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -42,12 +42,11 @@ jobs:
           AWS_DEFAULT_REGION: "us-east-1"
 
       - name: Trigger SNS notification
-          run: |
-            aws sns publish --topic-arn arn:aws:sns:us-east-1:204597968057:roeys-lambda:30663b1d-911e-403c-b0b5-4edf3d2fd28c \
-            --message "Lambda function updated successfully!" \
-            --subject "Lambda Update Success"
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: "us-east-1"
-          continue-on-error: false
+        run: |
+          aws sns publish --topic-arn arn:aws:sns:us-east-1:204597968057:roeys-lambda:30663b1d-911e-403c-b0b5-4edf3d2fd28c \
+          --message "Lambda function updated successfully!" \
+          --subject "Lambda Update Success"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "us-east-1"
